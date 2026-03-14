@@ -1,18 +1,16 @@
 class Solution {
 
     public int[] twoSum(int[] nums, int target) {
-
-        Map<Integer, Integer> numberToIndex = new HashMap<>();
+        
+        Map<Integer, Integer> numToIndex = new HashMap<>();
 
         for (var i = 0; i < nums.length; i++) {
 
-            var missing = target - nums[i];
-
-            if (numberToIndex.containsKey(missing)) {
-                return new int[] { i, numberToIndex.get(missing) };
+            if (numToIndex.containsKey(target - nums[i])) {
+                return new int[] { i, numToIndex.get(target - nums[i]) };
             }
 
-            numberToIndex.put(nums[i], i);
+            numToIndex.put(nums[i], i);
         }
 
         throw new IllegalStateException();
