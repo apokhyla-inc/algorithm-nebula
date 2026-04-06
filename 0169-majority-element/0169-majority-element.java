@@ -1,18 +1,19 @@
 class Solution {
 
     public int majorityElement(int[] nums) {
-        
-        Map<Integer, Integer> numFrequencies = new HashMap<>();
+
+        var result = 0;
+        var count = 0;
 
         for (var n : nums) {
-            
-            numFrequencies.merge(n, 1, Integer::sum);
 
-            if (numFrequencies.containsKey(n) && numFrequencies.get(n) > nums.length / 2) {
-                return n;
+            if (count == 0) {
+                result = n;
             }
+
+            count += n == result ? 1 : -1;
         }
 
-        throw new IllegalStateException();
+        return result;
     }
 }
